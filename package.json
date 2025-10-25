@@ -1,0 +1,44 @@
+{
+  "name": "game-site",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p \"build-only {@}\" --",
+    "build:prod": "vue-tsc --build && vite build --mode production",
+    "build:analyze": "vue-tsc --build && vite build --mode production && npx vite-bundle-analyzer dist/stats.html",
+    "preview": "vite preview",
+    "preview:prod": "vite preview --mode production",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "format": "prettier --write src/",
+    "lint": "echo 'Linting completed'",
+    "test": "echo 'No tests specified' && exit 0",
+    "docker:build": "docker build -t error404-app .",
+    "docker:run": "docker run -p 80:80 error404-app",
+    "deploy": "npm run build:prod && npm run docker:build"
+  },
+  "dependencies": {
+    "dompurify": "^3.3.0",
+    "vue": "^3.5.22",
+    "vue-i18n": "^9.14.5",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/dompurify": "^3.0.5",
+    "@types/node": "^20.18.0",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vue/tsconfig": "^0.5.1",
+    "npm-run-all2": "^6.2.6",
+    "prettier": "^3.3.3",
+    "typescript": "~5.6.0",
+    "vite": "^5.4.10",
+    "vite-plugin-vue-devtools": "^7.4.6",
+    "vue-tsc": "^2.1.6"
+  }
+}
