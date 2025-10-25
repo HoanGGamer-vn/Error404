@@ -1,0 +1,46 @@
+name: Build and deploy to GitHub Pages
+
+# Grant minimal permissions required so GITHUB_TOKEN can push pages
+permissions:
+  contents: read
+  pages: write
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # ensure the action can push back when using the automatically provided GITHUB_TOKEN
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (production)
+        run: npm run build:prod
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # Prefer a user-provided Personal Access Token (better permissions).
+          # Create a secret named GH_PAGES_TOKEN in repository settings and set it to a PAT
+          # with repo + workflow + pages permissions. If not present, fallback to the automatic GITHUB_TOKEN.
+          github_token: ${{ secrets.GH_PAGES_TOKEN || secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          # optional: keep history
+          keep_files: false
