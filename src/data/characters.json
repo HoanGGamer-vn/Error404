@@ -4,7 +4,7 @@
       "id": "unknown",
       "name": "UNKNOWN",
       "slug": "unknown",
-  "icon": "images/factions/unknown-icon.png",
+  "icon": "/images/factions/unknown-icon.png",
   "symbol": "images/factions/unknown-symbol.png",
       "description": "Intercontinental Traveler",
       "lore": "Một tổ chức bí ẩn với những kẻ du hành xuyên lục địa...",

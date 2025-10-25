@@ -10,7 +10,7 @@
       "tags": ["update", "new-content", "story"],
       "author": {
         "name": "Error404 Team",
-    "avatar": "images/author-avatar.png"
+  "avatar": "/images/author-avatar.png"
       },
       "publishedAt": "2024-01-15T09:00:00Z",
       "updatedAt": "2024-01-15T09:00:00Z",
