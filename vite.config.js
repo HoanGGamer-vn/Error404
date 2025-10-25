@@ -7,8 +7,9 @@ export default defineConfig(function (_a) {
     var mode = _a.mode;
     var env = loadEnv(mode, process.cwd(), '');
     return {
-        // GitHub Pages base path (change this if using different repo name)
-        base: mode === 'production' ? '/WEB1013-ASM/' : '/',
+        // GitHub Pages base path (change this to your repository name)
+        // When deploying to https://<user>.github.io/Error404/ set base to '/Error404/'
+        base: mode === 'production' ? '/Error404/' : '/',
         plugins: [
             vue(),
             vueDevTools(),
