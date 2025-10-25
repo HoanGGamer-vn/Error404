@@ -1,9 +1,12 @@
 name: "Draft: Build & Deploy to GitHub Pages"
 
-# Manual draft workflow. It uses workflow_dispatch so it won't run automatically.
-# Requires a repository secret `GH_PAGES_TOKEN` (preferred) or will fallback to GITHUB_TOKEN.
+# This workflow supports both manual runs and automatic runs on push to master.
+# It requires the repository secret `GH_PAGES_TOKEN` (preferred) or will fallback to GITHUB_TOKEN.
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - master
 
 permissions:
   contents: read
